@@ -133,6 +133,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `users`
+-- Admin anlegen username: admin@muh.vieh passwort: muhvieh
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `newsletter`, `role`, `last_login`) VALUES
+(1, 'admin@muh.vieh', '1a7b64a1db1dafdf120f5f19f55694ff', 0, 1, '2014-12-02 09:53:00');
+
 -- --------------------------------------------------------
 
 --
