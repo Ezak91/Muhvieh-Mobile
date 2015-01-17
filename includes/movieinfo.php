@@ -26,15 +26,28 @@ if(isset($_SESSION["user_id"]))
 			<li>Bewertung: <b>$row->vote_average / 10 ($row->vote_count Stimmen)</b></li>
 			<li>Kategorien: <b>";
 			$quer = "Select * from categories_main where id IN (Select categorie_id from categories where movie_id = $row->id)";
-							$ret = mysql_query($quer);
-							while($row2 = mysql_fetch_object($ret))
-							{
-								echo "$row2->name ";
-							}
+			$ret = mysql_query($quer);
+			while($row2 = mysql_fetch_object($ret))
+			{
+				echo "$row2->name ";
+			}
 		
 			echo "</b></li>
-			
-			<li><b>Inhalt:</b></li>
+			<li>Regisseur: <b>";
+			$quer = "Select * from directors_main where id IN (Select director_id from directors where movie_id = $row->id)";
+			$ret = mysql_query($quer);
+			while($row2 = mysql_fetch_object($ret))
+			{
+				echo "$row2->name ";
+			}
+			echo "</b></li><li>Schauspieler: <b>";
+			$quer = "Select * from credits_main where id IN (Select credits_id from credits where movie_id = $row->id)";
+			$ret = mysql_query($quer);
+			while($row2 = mysql_fetch_object($ret))
+			{
+				echo "$row2->name ";
+			}
+			echo "</b></li><li><b>Inhalt:</b></li>
 			<span> $row->overview</span>
 			<li><a href='$row->homepage'>Homepage: <b>$row->homepage</b></a></li>
 			<li><a href='http://www.imdb.com/title/$row->imdb_id'> Film auf <b>IMDB<b></a></li>
