@@ -70,6 +70,13 @@ if (isset($_SESSION["user_id"]))
 							{
 								echo "$row2->name ";
 							}
+							echo "</p><p>";
+							$quer = "Select * from credits_main where id IN (Select credits_id from credits where movie_id = $row->id)";
+							$ret = mysql_query($quer);
+							while($row2 = mysql_fetch_object($ret))
+							{
+								echo "$row2->name ";
+							}
 							echo "</p></a>";
 							if ($_SESSION["role"] == 1)
 								{
