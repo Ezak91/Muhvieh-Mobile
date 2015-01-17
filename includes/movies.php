@@ -61,8 +61,8 @@ if (isset($_SESSION["user_id"]))
 						<li><a href='index.php?include=movieinfo.php&movie_id=$row->id' data-ajax='false'>
 							<img src='http://image.tmdb.org/t/p/w500$row->cover' />
 							<h2>$row->title</h2>
-							<p>$row->release_date</p>
-							<p>
+							<p>Veröffentlicht am: $row->release_date</p>
+							<p> Kategorien: 
 							";
 							$quer = "Select * from categories_main where id IN (Select categorie_id from categories where movie_id = $row->id)";
 							$ret = mysql_query($quer);
@@ -70,8 +70,15 @@ if (isset($_SESSION["user_id"]))
 							{
 								echo "$row2->name ";
 							}
-							echo "</p><p>";
+							echo "</p><p style='display:none;'>Schauspieler: ";
 							$quer = "Select * from credits_main where id IN (Select credits_id from credits where movie_id = $row->id)";
+							$ret = mysql_query($quer);
+							while($row2 = mysql_fetch_object($ret))
+							{
+								echo "$row2->name ";
+							}
+							echo "</p><p style='display:none;'> Regisseur: ";
+							$quer = "Select * from directors_main where id IN (Select director_id from directors where movie_id = $row->id)";
 							$ret = mysql_query($quer);
 							while($row2 = mysql_fetch_object($ret))
 							{

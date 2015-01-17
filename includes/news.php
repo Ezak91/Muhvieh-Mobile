@@ -21,8 +21,8 @@ if(isset($_SESSION["user_id"]))
 						<li><a href='index.php?include=movieinfo.php&movie_id=$row->id' data-ajax='false'>
 							<img src='http://image.tmdb.org/t/p/w500$row->cover' />
 							<h2>$row->title</h2>
-							<p>$row->release_date</p>
-							<p>
+							<p>Veröffentlicht am: $row->release_date</p>
+							<p> Kategorien: 
 							";
 							$quer = "Select * from categories_main where id IN (Select categorie_id from categories where movie_id = $row->id)";
 							$ret = mysql_query($quer);
