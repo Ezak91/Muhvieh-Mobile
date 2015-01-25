@@ -12,7 +12,7 @@ if ($_SESSION["role"] == 1)
 	// header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	// header('Content-type: application/json');
 
-	$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=311e70fd5d86a21b7ec0756a6067ac4d&language=de"),true);
+	$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=311e70fd5d86a21b7ec0756a6067ac4d&language=de&append_to_response=trailers"),true);
 
 	$id = $arr['id'];
 	$title = mysql_real_escape_string($arr['title']);
@@ -26,7 +26,8 @@ if ($_SESSION["role"] == 1)
 	$imdb_id = $arr['imdb_id'];
 	$vote_average = $arr['vote_average'];
 	$vote_count = $arr['vote_count'];
-	
+	$trailer_id = $arr['trailers']['youtube'][0]['source'];
+
 	$credits = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id/credits?&api_key=311e70fd5d86a21b7ec0756a6067ac4d&language=de"),true);	
 	
 	$crew = $credits['crew'];
@@ -34,18 +35,18 @@ if ($_SESSION["role"] == 1)
 	
 	foreach ($crew as &$director)
 	{
-			$director_job = $director["job"];
-			$director_name = $director["name"];
-			$director_id = $director["id"];
-			
-			if($director_job == "Director")
-			{
-				mysql_query("set names 'utf8'");
-				$insert = "INSERT INTO directors_main VALUES ($director_id,'$director_name')";
-				mysql_query($insert);
-				$insert = "INSERT INTO directors VALUES ($id,$director_id)";
-				mysql_query($insert);
-			} 
+		$director_job = $director["job"];
+		$director_name = $director["name"];
+		$director_id = $director["id"];
+		
+		if($director_job == "Director")
+		{
+			mysql_query("set names 'utf8'");
+			$insert = "INSERT INTO directors_main VALUES ($director_id,'$director_name')";
+			mysql_query($insert);
+			$insert = "INSERT INTO directors VALUES ($id,$director_id)";
+			mysql_query($insert);
+		} 
 	}	
 	
 	//3 Schauspieler speichern
@@ -71,7 +72,7 @@ foreach ($arr['genres'] as &$genre) {
 }
 	
 	mysql_query("set names 'utf8'");
-	$insert = "INSERT INTO movies VALUES ($id, '$title', '$original_title', '$overview', '$cover', 0, '$release_date', $duration, '$homepage', '$imdb_id', $vote_average, $vote_count, CURRENT_TIMESTAMP)";
+	$insert = "INSERT INTO movies VALUES ($id, '$title', '$original_title', '$overview', '$cover', 0, '$release_date', $duration, '$homepage', '$imdb_id', $vote_average, $vote_count, '$trailer_id', CURRENT_TIMESTAMP)";
 	mysql_query($insert) OR die (mysql_error());;
 	echo"<script type='text/javascript'> window.location.href='../index.php?include=admin.php&film=$title'</script>";
 }

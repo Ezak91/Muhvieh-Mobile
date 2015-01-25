@@ -50,10 +50,13 @@ if(isset($_SESSION["user_id"]))
 			echo "</b></li><li><b>Inhalt:</b></li>
 			<span> $row->overview</span>
 			<li><a href='$row->homepage'>Homepage: <b>$row->homepage</b></a></li>
-			<li><a href='http://www.imdb.com/title/$row->imdb_id'> Film auf <b>IMDB<b></a></li>
-			</ul>
-		</div>
-	";
+			<li><a href='http://www.imdb.com/title/$row->imdb_id'> Film auf <b>IMDB<b></a></li>";
+			if (!empty($row->trailer_id))
+			{
+				echo "<li><object width=\"425\" height=\"350\" data=\"http://www.youtube.com/v/$row->trailer_id\" type=\"application/x-shockwave-flash\"><param name=\"src\" value=\"http://www.youtube.com/v/$row->trailer_id\" /></object></li>";
+	        }
+			echo "</ul></div>";
+
 }
 else
 {
