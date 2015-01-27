@@ -113,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `imdb_id` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `vote_average` double(2,1) DEFAULT NULL,
   `vote_count` int(11) DEFAULT NULL,
+  `trailer_id` varchar(32) COLLATE utf8_bin NOT NULL,  
   `add_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
