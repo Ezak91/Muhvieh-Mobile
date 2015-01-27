@@ -3,6 +3,10 @@ include "conf/config.php";
 
 if (isset($_SESSION["user_id"]))
 {
+	$result = mysql_query("SELECT COUNT(*) FROM movies");
+	$movies_count = mysql_result($result,0);
+	echo "$movies_count Filme";
+	
 	$order = 0;
 	$abfrage = "";
 
