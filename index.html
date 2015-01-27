@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Muhvieh-mobile by Ezak91</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Muhvieh-mobile</h1>
+        <p>Administer your moviecollection with movieinformations from TMDB</p>
+
+        <p class="view"><a href="https://github.com/Ezak91/Muhvieh-Mobile">View the Project on GitHub <small>Ezak91/Muhvieh-Mobile</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Ezak91/Muhvieh-Mobile/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Ezak91/Muhvieh-Mobile/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Ezak91/Muhvieh-Mobile">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="welcome-to-muhvieh-mobile" class="anchor" href="#welcome-to-muhvieh-mobile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Muhvieh-mobile.</h3>
+
+<p>Muhvieh-mobile is a webpage written in PHP. It use jquery Mobile, so it can be used on smartphones and laptops. Muhvieh Mobile is a webapp to administer your moviecollection with informations from TMDB.</p>
+
+<p><strong>To use Muhvieh-mobile you need a API-Key from <a href="https://www.themoviedb.org/documentation/api">TMDB</a>.</strong></p>
+
+<h3>
+<a id="installation-example-ubuntu-1404" class="anchor" href="#installation-example-ubuntu-1404" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation (example Ubuntu 14.04)</h3>
+
+<ul>
+<li>Download the script to your webdirectory</li>
+</ul>
+
+<pre><code>$ cd /var/www/html
+$ git clone https://github.com/Ezak91/Muhvieh-Mobile.git
+</code></pre>
+
+<ul>
+<li>Add the database and tables with the commands from :</li>
+</ul>
+
+<pre><code>$ nano Muhvieh-Mobile/scripts/muhvieh.sql
+</code></pre>
+
+<ul>
+<li>Edit the config file and add your credentials</li>
+</ul>
+
+<pre><code>$ nano Muhvieh-Mobile/conf/config.php
+</code></pre>
+
+<ul>
+<li>Credentials for your database connection</li>
+</ul>
+
+<pre><code>$config = array (
+"mysql_server" =&gt; "localhost",
+"mysql_user" =&gt; "root",
+"mysql_password" =&gt; "password",
+"mysql_database" =&gt; "muhvieh_db"
+);
+</code></pre>
+
+<ul>
+<li>TMDB Api-Key, mail of the administrator, homepageurl, homepagename</li>
+</ul>
+
+<pre><code>// Settings
+$api_key = "Your TMDB Api-Key";
+$admin_mail = "Your Muhvieh Admin Mail";
+$homepage = "Your Muhvieh Hompage Url";
+$hp_name = "Name of your Muhvieh-Url";
+?&gt;
+</code></pre>
+
+<p>Now it's possible to call the script in your webbrowser http://youripordomaine/Muhvieh-mobile</p>
+
+<p>You can login and change the inital password of the administrator account.</p>
+
+<pre><code>User: admin@muh.vieh
+password: muhvieh
+</code></pre>
+
+<h3>
+<a id="update-muhvieh-mobile" class="anchor" href="#update-muhvieh-mobile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Update Muhvieh-Mobile</h3>
+
+<p>You can simply update Muhvieh-Mobile with git.</p>
+
+<pre><code>* cd /var/www/html/Muhvieh-Mobile
+* git pull
+</code></pre>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>Marc Szymkowiak (<a href="https://github.com/Ezak91" class="user-mention">@Ezak91</a>).</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Ezak91">Ezak91</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
