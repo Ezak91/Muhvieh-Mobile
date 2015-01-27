@@ -53,8 +53,10 @@ if(isset($_SESSION["user_id"]))
 			<li><a href='http://www.imdb.com/title/$row->imdb_id'> Film auf <b>IMDB<b></a></li>";
 			if (!empty($row->trailer_id))
 			{
-				echo "<li><object width=\"425\" height=\"350\" data=\"http://www.youtube.com/v/$row->trailer_id\" type=\"application/x-shockwave-flash\"><param name=\"src\" value=\"http://www.youtube.com/v/$row->trailer_id\" /></object></li>";
-	        }
+			//	echo "<li><object width=\"425\" height=\"350\" data=\"http://www.youtube.com/v/$row->trailer_id\" type=\"application/x-shockwave-flash\"><param name=\"src\" value=\"http://www.youtube.com/v/$row->trailer_id\" /></object></li>";
+	        
+				echo"<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$row->trailer_id?rel=0\" frameborder=\"0\" allowfullscreen></iframe>";
+			}
 			echo "</ul></div>";
 
 }
