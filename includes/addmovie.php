@@ -12,7 +12,7 @@ if ($_SESSION["role"] == 1)
 	// header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	// header('Content-type: application/json');
 
-	$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=311e70fd5d86a21b7ec0756a6067ac4d&language=de&append_to_response=trailers"),true);
+	$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=$apikey&language=de&append_to_response=trailers"),true);
 
 	$id = $arr['id'];
 	$title = mysql_real_escape_string($arr['title']);
@@ -28,7 +28,7 @@ if ($_SESSION["role"] == 1)
 	$vote_count = $arr['vote_count'];
 	$trailer_id = $arr['trailers']['youtube'][0]['source'];
 
-	$credits = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id/credits?&api_key=311e70fd5d86a21b7ec0756a6067ac4d&language=de"),true);	
+	$credits = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id/credits?&api_key=$apikey&language=de"),true);	
 	
 	$crew = $credits['crew'];
 	$cast = $credits ['cast'];
