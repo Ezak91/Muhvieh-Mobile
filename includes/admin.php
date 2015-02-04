@@ -41,7 +41,7 @@ else
 						{
 						    dt = new Date(val.release_date);
 							datum = dt.getDate() + '.' + (dt.getMonth() + 1) + '.' + dt.getFullYear();							
-							html += "<li><a data-ajax='false' href='includes/addmovie.php?&id=" + val.id + "'>" + val.title + "<br>" + datum + "</a></li>";
+							html += "<li><a data-ajax='false' href='includes/addmovie.php?&id=" + val.id + "'><img src='http://image.tmdb.org/t/p/w500" + val.poster_path + "' />" + val.title + "<br>" + datum + "</a></li>";
 						}
 							});
 							$ul.html( html );
