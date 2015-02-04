@@ -46,8 +46,8 @@ if ($_SESSION["role"] == 1)
 		$header  .= 'MIME-Version: 1.0' . "\r\n";
 		$header .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
-		$debug = mail($empfaenger, $betreff, $nachricht, $header);
-		echo "$debug";
+		 mail($empfaenger, $betreff, $nachricht, $header);
+		 echo "<script type='text/javascript'> window.location.href='../index.php?message=Der User $email wurde angelegt. PW: $pw '</script>";
 
 		
 	}
