@@ -11,7 +11,7 @@ session_start();
 	<link rel="stylesheet" href="css/jquery-ui.css" />	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
 	<script  src="jquery/jquery-1.9.1.min.js"></script>
-	<script  src="jquery/jquery.mobile-1.4.2.min.js"></script>
+	<script  src="jquery/jquery.mobile-1.4.5.min.js"></script>
 </head>		
 <body>	
 	<div data-role="page">
