@@ -1,4 +1,6 @@
 <?php
+include "conf/config.php";
+
 if ($_SESSION["role"] == 1)
 {
 	if (isset($_GET["film"]))
@@ -10,6 +12,27 @@ if ($_SESSION["role"] == 1)
 		  <label for='movie-search'>Search Movie:</label>
 	      <ul id='autocomplete' data-role='listview' data-inset='true' data-filter='true' data-filter-placeholder='Film hinzufügen' data-filter-theme='d'></ul>
 	      </div>";
+
+	echo "<div data-role='collapsible' data-content-theme='false'><h4>Userliste</h4><p><ul data-role='listview' data-inset='true' data-icon='delete'>";
+	mysql_query("set names 'utf8'");
+	$abfrage = "SELECT * FROM users";
+	$ergebnis = mysql_query($abfrage);
+
+	while($row = mysql_fetch_object($ergebnis))
+	{
+		echo "
+				<li>
+					<a href='includes/deleteuser.php?user_id=$row->id' data-ajax='false' >
+					<h2>Username: $row->email</h2>
+					<p>Letzter Login: $row->last_login</p>
+					</a>
+				</li>";
+						
+				
+	}
+
+	echo "</ul></p><div>";
+
 }
 else
 {
