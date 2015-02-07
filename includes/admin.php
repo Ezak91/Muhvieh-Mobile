@@ -15,7 +15,7 @@ if ($_SESSION["role"] == 1)
 
 	echo "<div data-role='collapsible' data-content-theme='false'><h4>Userliste</h4><p><ul data-role='listview' data-inset='true' data-icon='delete'>";
 	mysql_query("set names 'utf8'");
-	$abfrage = "SELECT * FROM users";
+	$abfrage = "SELECT * FROM users ORDER BY last_login DESC";
 	$ergebnis = mysql_query($abfrage);
 
 	while($row = mysql_fetch_object($ergebnis))
