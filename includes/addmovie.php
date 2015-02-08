@@ -61,20 +61,28 @@ if ($_SESSION["role"] == 1)
 		mysql_query($insert);
 	}
 	
-foreach ($arr['genres'] as &$genre) {
-	$categorie_id = $genre['id'];
-	$categorie_name = $genre['name'];
-	mysql_query("set names 'utf8'");
-	$insert = "INSERT INTO categories_main VALUES ($categorie_id,'$categorie_name')";
-	mysql_query($insert);
-	$insert = "INSERT INTO categories VALUES ($id,$categorie_id)";
-	mysql_query($insert);
-}
+foreach ($arr['genres'] as &$genre)
+	{
+		$categorie_id = $genre['id'];
+		$categorie_name = $genre['name'];
+		mysql_query("set names 'utf8'");
+		$insert = "INSERT INTO categories_main VALUES ($categorie_id,'$categorie_name')";
+		mysql_query($insert);
+		$insert = "INSERT INTO categories VALUES ($id,$categorie_id)";
+		mysql_query($insert);
+	}
 	
 	mysql_query("set names 'utf8'");
 	$insert = "INSERT INTO movies VALUES ($id, '$title', '$original_title', '$overview', '$cover', 0, '$release_date', $duration, '$homepage', '$imdb_id', $vote_average, $vote_count, '$trailer_id', CURRENT_TIMESTAMP)";
-	mysql_query($insert) OR die (mysql_error());;
-	echo"<script type='text/javascript'> window.location.href='../index.php?include=admin.php&film=$title'</script>";
+	$check = mysql_query($insert);
+	if($check == false)
+	{
+		echo "<script type='text/javascript'> window.location.href='../index.php?message=Fehler beim Einfügen des Films (Bereits vorhanden?)'</script>";
+	}
+	else
+	{
+		echo "<script type='text/javascript'> window.location.href='../index.php?include=admin.php&film=$title'</script>";
+	}
 }
 else
 {
