@@ -1,0 +1,3 @@
+.ui-listview > li, .ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6 {
+    white-space: normal !important;
+}
