@@ -47,8 +47,8 @@ if(isset($_SESSION["user_id"]))
 			{
 				echo "$row2->name ";
 			}
-			echo "</b></li><li><b>Inhalt:</b></li>
-			<span> $row->overview</span>
+			echo "</b></li>
+			<li>Inhalt:</b><br><b>$row->overview</b></li>
 			<li><a href='$row->homepage'>Homepage: <b>$row->homepage</b></a></li>
 			<li><a href='http://www.imdb.com/title/$row->imdb_id'> Film auf <b>IMDB<b></a></li>";
 			if (!empty($row->trailer_id))
