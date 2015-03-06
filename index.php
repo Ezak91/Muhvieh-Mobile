@@ -13,6 +13,13 @@ session_start();
 	<link rel="stylesheet" href="css/muhvieh.css">
 	<script  src="jquery/jquery-1.11.2.min.js"></script>
 	<script  src="jquery/jquery.mobile-1.4.5.min.js"></script>
+	<script src="js/lazyload.js" type="text/javascript"></script>
+	<script>
+		$(function()
+		{
+    		$("img.lazy").lazyload();
+		});
+	</script>
 </head>		
 <body>	
 	<div data-role="page">
