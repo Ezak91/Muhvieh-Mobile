@@ -17,7 +17,11 @@ session_start();
 	<script>
 		$(function()
 		{
-    		$("img.lazy").lazyload();
+    		$("img.lazy").lazyload(
+    		{
+    			//load cover 200px before it appears on screen
+    			threshold : 200
+			})
 		});
 	</script>
 </head>		
