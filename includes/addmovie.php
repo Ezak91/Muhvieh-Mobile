@@ -8,17 +8,25 @@ if ($_SESSION["role"] == 1)
 {
 	$movie_id = $_GET["id"];
 
-	// header('Cache-Control: no-cache, must-revalidate');
-	// header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-	// header('Content-type: application/json');
-
 	$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=$api_key&language=de&append_to_response=trailers"),true);
 
 	$id = $arr['id'];
 	$title = mysql_real_escape_string($arr['title']);
 	$original_title = mysql_real_escape_string($arr['original_title']);
 	$overview = mysql_real_escape_string($arr['overview']);
-	$cover = $arr['poster_path'];
+
+	if ( $arr['poster_path'] == "")
+	{
+		$cover = "/nocover.png";
+	}
+	else
+	{
+		$cover = $arr['poster_path'];
+		$url = 'http://image.tmdb.org/t/p/w500'.$cover;
+		$img = '../cover'.$cover;
+		file_put_contents($img, file_get_contents($url));	
+	}
+
 	$adult = $arr['adult'];
 	$release_date = $arr['release_date'];
 	$duration = $arr['runtime'];

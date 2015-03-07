@@ -21,7 +21,7 @@ if(isset($_SESSION["user_id"]))
 			<ul data-role='listview' data-inset='true'>
 			<span style='float: right;'>
 				<a href='#popupcover' data-rel='popup' data-position-to='window' data-transition='fade'>
-					<img src = 'http://image.tmdb.org/t/p/w500$row->cover' style='width:40%'>
+					<img src = 'cover$row->cover' style='width:40%'>
 				</a>
 			</span><br>	
 			<li>Titel: <b>$row->title</b></li>

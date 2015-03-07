@@ -19,7 +19,7 @@ if(isset($_SESSION["user_id"]))
 		{
 			echo "
 						<li><a href='index.php?include=movieinfo.php&movie_id=$row->id' data-ajax='false'>
-							<img src='http://image.tmdb.org/t/p/w500$row->cover' />
+							<img src='cover$row->cover' />
 							<h2>$row->title</h2>
 							<p>Veröffentlicht am: $row->release_date</p>
 							<p> Kategorien: 
