@@ -11,6 +11,10 @@ Download the script to your webdirectory
     $ cd /var/www/html
     $ git clone https://github.com/Ezak91/Muhvieh-Mobile.git
 
+Add www-data to owners of cover
+
+    $ chown www-data Muhvieh-Mobile/cover
+
 Add the database and tables with the commands from :
 
     $ nano Muhvieh-Mobile/scripts/muhvieh.sql
