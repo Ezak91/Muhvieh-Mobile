@@ -62,7 +62,7 @@ if(isset($_SESSION["user_id"]))
 			}
 			echo "</ul></div>";
 			echo "<div data-role='popup' id='popupcover' data-overlay-theme='a' data-theme='d' data-corners='false'>
-                  <a href='#' data-rel='back' data-role='button' data-theme='b' data-icon='delete' data-iconpos='notext' class='ui-btn-right'>Close</a><img src='http://image.tmdb.org/t/p/w500$cover' style='max-height:512px;'' alt='$cover' />
+                  <a href='#' data-rel='back' data-role='button' data-theme='b' data-icon='delete' data-iconpos='notext' class='ui-btn-right'>Close</a><img src='cover$cover' style='max-height:512px;'' alt='$cover' />
                   </div>";
 
 }
