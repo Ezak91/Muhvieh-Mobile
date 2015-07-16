@@ -1,13 +1,9 @@
 <?php
 	include "../conf/config.php";
 
-	$user = $_Post["username"];
-	$pw = $_Post["pw"];
-	$movieid = $_Post["movieid"];
-	$action = $_POST["action"];
-
-	function auth($user,$pw)
+	function auth()
 	{
+		$user = $_Post["username"];
 		$passwort = md5($_POST["password"]);
 
 		$abfrage = "SELECT id, email, password, role FROM users WHERE email = '$user' LIMIT 1";
@@ -24,10 +20,12 @@
 		}
 	}
 
-	function addMovie($movieID)
+	function addMovie()
 	{
-		$movie_id = $_GET["id"];
-		$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=$api_key&language=de&append_to_response=trailers"),true);
+		$movie_id = $_GET["movieid"];
+		$api_key = $_GET["apikey"];
+		$language = $_GET["language"];
+		$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=$api_key&language=$language&append_to_response=trailers"),true);
 		$id = $arr['id'];
 		$title = mysql_real_escape_string($arr['title']);
 		$original_title = mysql_real_escape_string($arr['original_title']);
@@ -111,23 +109,24 @@
 		}
 	}
 
-	if(auth($user,$pw))
+	$action = $_POST["action"];
+	if(auth())
 	{
 		if($action == "addmovie")
 		{
-			if(addMovie($movieid))
+			if(addMovie())
 			{
-				return "Film wurde hinzugefügt";
+				echo "Film wurde hinzugefügt";
 			}
 			else
 			{
-				return "Fehler beim hinzufügen des Films";
+				echo "Fehler beim hinzufügen des Films";
 			}
 		}
 	}
 	else
 	{
-		return "Fehler bei der Anmeldung";
+		echo "Fehler bei der Anmeldung";
 	}
 
 ?>
