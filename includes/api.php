@@ -20,9 +20,9 @@
 
 	function addMovie()
 	{
-		$movie_id = $_GET["movieid"];
-		$api_key = $_GET["apikey"];
-		$language = $_GET["language"];
+		$movie_id = $_POST["movieid"];
+		$api_key = $_POST["apikey"];
+		$language = $_POST["language"];
 		$arr = json_decode(file_get_contents("http://api.themoviedb.org/3/movie/$movie_id?&api_key=$api_key&language=$language&append_to_response=trailers"),true);
 		$id = $arr['id'];
 		$title = mysql_real_escape_string($arr['title']);
@@ -107,7 +107,7 @@
 		}
 	}
 
-	$action = $_GET["action"];
+	$action = $_POST["action"];
 	if(auth())
 	{
 		if($action == "addmovie")
