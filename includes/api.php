@@ -3,9 +3,8 @@
 
 	function auth()
 	{
-		$user = $_Post["username"];
+		$user = $_POST["username"];
 		$passwort = md5($_POST["password"]);
-
 		$abfrage = "SELECT id, email, password, role FROM users WHERE email = '$user' LIMIT 1";
 		$ergebnis = mysql_query($abfrage) OR die (mysql_error());
 		$row = mysql_fetch_object($ergebnis);
@@ -17,7 +16,6 @@
 		    {
 		    	return false;
 		    }
-		}
 	}
 
 	function addMovie()
@@ -109,7 +107,7 @@
 		}
 	}
 
-	$action = $_POST["action"];
+	$action = $_GET["action"];
 	if(auth())
 	{
 		if($action == "addmovie")
